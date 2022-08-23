@@ -1,4 +1,4 @@
-#include <main.h>
+#include "main.h"
 
 /**
  * read_textfile - read a text file and print the letters
@@ -11,9 +11,9 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int ptr;
-	char *buf;
+	char *bufi;
 
-	ssize_t rptr,wptr;
+	ssize_t rptr,wpr;
 
 	if(!filename)
 		return (0);
@@ -23,17 +23,18 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	buf = malloc(sizeof(char) * (letters));
+
 	if(!buf) 
 		return (0);
 
 	rptr = read(ptr, buf, letters);
-	wptr = write(STDOUT_FILENO, buf, rptr);
+	wpr = write(STDOUT_FILENO, buf, rptr);
 
 	close(ptr);
 
 	free(buf);
 
-	return (wptr);
+	return (wpr);
 
 
 }
